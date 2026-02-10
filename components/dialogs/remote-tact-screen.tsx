@@ -8,9 +8,11 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { RotateCcw, Power, Factory } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/i18n";
 
 export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any; open: boolean; onOpenChange: (o: boolean) => void }) {
   const [controlMode, setControlMode] = useState("Auto");
+  const { t } = useLanguage();
 
   if (!machine) return null;
 
@@ -20,24 +22,23 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
         <DialogHeader className="pb-4 border-b border-border">
           <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-3">
             <Factory className="w-6 h-6 text-primary" />
-            Remote TACT Screen - {machine?.name || 'Machine'}
+            {t("remoteTactScreen.title")} - {machine?.name || 'Machine'}
           </DialogTitle>
         </DialogHeader>
 
         <Tabs defaultValue="Operation" className="w-full">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="Operation">Operation</TabsTrigger>
-            <TabsTrigger value="Parameters">Parameters</TabsTrigger>
-            <TabsTrigger value="Alarm History">Alarm History</TabsTrigger>
-            <TabsTrigger value="Maintenance">Maintenance</TabsTrigger>
+            <TabsTrigger value="Operation">{t("remoteTactScreen.operation")}</TabsTrigger>
+            <TabsTrigger value="Parameters">{t("remoteTactScreen.parameters")}</TabsTrigger>
+            <TabsTrigger value="Alarm History">{t("remoteTactScreen.alarmHistory")}</TabsTrigger>
+            <TabsTrigger value="Maintenance">{t("remoteTactScreen.maintenance")}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="Operation" className="space-y-6 mt-6 overflow-y-auto max-h-[70vh]">
             <div className="grid grid-cols-12 gap-6">
-              {/* Control Mode Section */}
               <Card className="col-span-12">
                 <CardHeader>
-                  <CardTitle className="text-lg">Control Mode</CardTitle>
+                  <CardTitle className="text-lg">{t("remoteTactScreen.controlMode")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-3 gap-4">
@@ -48,7 +49,7 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
                         variant={controlMode === mode ? "default" : "outline"}
                         className="h-12 text-sm font-medium"
                       >
-                        {mode}
+                        {mode === "Auto" ? t("remoteTactScreen.auto") : mode === "Semi-Auto" ? t("remoteTactScreen.semiAuto") : t("remoteTactScreen.manual")}
                       </Button>
                     ))}
                   </div>
@@ -58,68 +59,68 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
               {/* Parameters Section */}
               <Card className="col-span-8">
                 <CardHeader>
-                  <CardTitle className="text-lg">Machine Parameters</CardTitle>
+                  <CardTitle className="text-lg">{t("remoteTactScreen.machineParameters")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Injection Setpoint</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.injectionSetpoint")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="100" readOnly />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Unit</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.unit")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="mm" readOnly />
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Holding Setpoint</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.holdingSetpoint")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="100" readOnly />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Unit</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.unit")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="mm" readOnly />
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Suck Back Setpoint</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.suckBackSetpoint")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="100" readOnly />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Unit</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.unit")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="mm" readOnly />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-muted-foreground">Cooling Setpoint</label>
+                        <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.coolingSetpoint")}</label>
                         <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="200" readOnly />
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Back Pressure</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.backPressure")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="10" readOnly />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Unit</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.unit")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="kgf/cm²" readOnly />
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Cushion Setpoint</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.cushionSetpoint")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="300" readOnly />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Unit</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.unit")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="mm" readOnly />
                         </div>
                       </div>
                       <div className="bg-secondary/50 p-4 rounded-lg">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Current Position</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.currentPosition")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm font-mono" value="0.00 mm" readOnly />
                         </div>
                       </div>
@@ -127,15 +128,15 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
 
                     <div className="space-y-4">
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-muted-foreground">Cycle Time</label>
+                        <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.cycleTime")}</label>
                         <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="0.00" readOnly />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-muted-foreground">Planned End Time</label>
+                        <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.plannedEndTime")}</label>
                         <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm font-mono" value="2015/06/28-08:15:11" readOnly />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-muted-foreground">Semi-Auto Confirmation</label>
+                        <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.semiAutoConfirmation")}</label>
                         <div className="flex bg-card border border-border rounded-md p-2">
                           <span className="text-sm px-3 py-1 bg-muted rounded">OFF</span>
                           <div className="bg-primary text-primary-foreground px-2 py-1 ml-2 rounded text-sm">▶</div>
@@ -143,16 +144,16 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Cure Timer</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.cureTimer")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="00.0" readOnly />
                         </div>
                         <div className="space-y-2">
-                          <label className="text-sm font-medium text-muted-foreground">Unit</label>
+                          <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.unit")}</label>
                           <input className="w-full px-3 py-2 bg-background border border-border rounded-md text-sm" value="s" readOnly />
                         </div>
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-medium text-muted-foreground">Cure Position</label>
+                        <label className="text-sm font-medium text-muted-foreground">{t("remoteTactScreen.curePosition")}</label>
                         <div className="flex border border-border rounded-md overflow-hidden">
                           <button className="flex-1 px-3 py-2 bg-muted text-sm hover:bg-secondary">OFF</button>
                           <button className="flex-1 px-3 py-2 bg-primary text-primary-foreground text-sm">ON</button>
@@ -167,11 +168,11 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
               {/* Gauges Section */}
               <Card className="col-span-4">
                 <CardHeader>
-                  <CardTitle className="text-lg">Gauges</CardTitle>
+                  <CardTitle className="text-lg">{t("remoteTactScreen.gauges")}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="text-center">
-                    <div className="text-sm text-muted-foreground mb-2">Position Gauge</div>
+                    <div className="text-sm text-muted-foreground mb-2">{t("remoteTactScreen.positionGauge")}</div>
                     <div className="relative w-32 h-32 mx-auto">
                       <div className="w-full h-full rounded-full border-4 border-border relative">
                         <div className="absolute top-1/2 left-1/2 w-1 h-12 bg-status-error origin-bottom -translate-x-1/2 -translate-y-full rotate-[45deg]" />
@@ -186,7 +187,7 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
                   </div>
 
                   <div className="text-center">
-                    <div className="text-sm text-muted-foreground mb-2">Pressure Gauge</div>
+                    <div className="text-sm text-muted-foreground mb-2">{t("remoteTactScreen.pressureGauge")}</div>
                     <div className="relative w-32 h-32 mx-auto">
                       <div className="w-full h-full rounded-full border-4 border-border relative">
                         <div className="absolute top-1/2 left-1/2 w-1 h-12 bg-status-running origin-bottom -translate-x-1/2 -translate-y-full rotate-[90deg]" />
@@ -205,40 +206,45 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
               {/* Counters Section */}
               <Card className="col-span-12">
                 <CardHeader>
-                  <CardTitle className="text-lg">Production Counters</CardTitle>
+                  <CardTitle className="text-lg">{t("remoteTactScreen.productionCounters")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="bg-card border border-border rounded-lg p-4">
                       <div className="flex justify-between items-center mb-4">
-                        <h4 className="font-medium">Data Summary</h4>
+                        <h4 className="font-medium">{t("remoteTactScreen.dataSummary")}</h4>
                         <Button variant="outline" size="sm">
                           <RotateCcw className="w-4 h-4 mr-2" />
-                          Reset
+                          {t("remoteTactScreen.reset")}
                         </Button>
                       </div>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">Total Shots</span>
+                          <span className="text-muted-foreground">{t("remoteTactScreen.totalShots")}</span>
                           <span className="font-mono text-status-warning">100</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">Error Shots</span>
+                          <span className="text-muted-foreground">{t("remoteTactScreen.errorShots")}</span>
                           <span className="font-mono text-status-error">00</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">OK/Lot Count</span>
+                          <span className="text-muted-foreground">{t("remoteTactScreen.okLotCount")}</span>
                           <span className="font-mono text-status-running">400</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">NG/Lot Count</span>
+                          <span className="text-muted-foreground">{t("remoteTactScreen.ngLotCount")}</span>
                           <span className="font-mono text-status-warning">320</span>
                         </div>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                      {["Reset cycle count", "Reset OK count", "Reset NG count", "Reset Margin Timer"].map((label, i) => (
+                      {[
+                        t("remoteTactScreen.resetCycleCount"),
+                        t("remoteTactScreen.resetOkCount"),
+                        t("remoteTactScreen.resetNgCount"),
+                        t("remoteTactScreen.resetMarginTimer")
+                      ].map((label, i) => (
                         <Button key={i} variant="outline" className="h-10 text-sm">
                           <RotateCcw className="w-4 h-4 mr-2" />
                           {label}
@@ -253,11 +259,11 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
           <TabsContent value="Parameters" className="space-y-6 mt-6">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Machine Parameters</CardTitle>
+                <CardTitle className="text-lg">{t("remoteTactScreen.machineParameters")}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center text-muted-foreground py-8">
-                  Parameters configuration panel will be implemented here.
+                  {t("remoteTactScreen.parametersPlaceholder")}
                 </div>
               </CardContent>
             </Card>
@@ -266,11 +272,11 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
           <TabsContent value="Alarm History" className="space-y-6 mt-6">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Alarm History</CardTitle>
+                <CardTitle className="text-lg">{t("remoteTactScreen.alarmHistory")}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center text-muted-foreground py-8">
-                  Alarm history and logs will be displayed here.
+                  {t("remoteTactScreen.alarmHistoryPlaceholder")}
                 </div>
               </CardContent>
             </Card>
@@ -279,11 +285,11 @@ export function RemoteTactScreen({ machine, open, onOpenChange }: { machine: any
           <TabsContent value="Maintenance" className="space-y-6 mt-6">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Maintenance</CardTitle>
+                <CardTitle className="text-lg">{t("remoteTactScreen.maintenance")}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-center text-muted-foreground py-8">
-                  Maintenance schedules and procedures will be shown here.
+                  {t("remoteTactScreen.maintenancePlaceholder")}
                 </div>
               </CardContent>
             </Card>

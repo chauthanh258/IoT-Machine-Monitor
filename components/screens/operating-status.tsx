@@ -100,7 +100,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
               <DialogHeader className="pb-4 border-b border-border">
                 <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-3">
                   <Factory className="w-6 h-6 text-primary" />
-                  Machine Details - {selectedMachine.name}
+                  {t("operatingStatus.machineDetails")} - {selectedMachine.name}
                   <Badge 
                     variant="outline" 
                     className={cn(
@@ -122,7 +122,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                     {/* Left Column */}
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Machine ID:</span>
+                        <span className="text-sm text-muted-foreground">{t("operatingStatus.machineId")}:</span>
                         <input 
                           className="text-sm bg-background border border-border rounded px-2 py-1 w-24 text-center font-mono" 
                           value={selectedMachine.id} 
@@ -130,7 +130,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                         />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Lot No:</span>
+                        <span className="text-sm text-muted-foreground">{t("operatingStatus.lotNo")}:</span>
                         <input 
                           className="text-sm bg-background border border-border rounded px-2 py-1 w-24 text-center font-mono" 
                           value="nissei" 
@@ -138,7 +138,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                         />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Production Code:</span>
+                        <span className="text-sm text-muted-foreground">{t("operatingStatus.productionCode")}:</span>
                         <input 
                           className="text-sm bg-background border border-border rounded px-2 py-1 w-32 text-center font-mono" 
                           value="112233445566" 
@@ -146,7 +146,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                         />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Error Code:</span>
+                        <span className="text-sm text-muted-foreground">{t("operatingStatus.errorCode")}:</span>
                         <input 
                           className="text-sm bg-background border border-border rounded px-2 py-1 w-16 text-center font-mono" 
                           value="0" 
@@ -154,7 +154,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                         />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Current Status:</span>
+                        <span className="text-sm text-muted-foreground">{t("operatingStatus.currentStatus")}:</span>
                         <input 
                           className={cn(
                             "text-sm border border-border rounded px-2 py-1 w-24 text-center font-mono",
@@ -171,7 +171,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                     {/* Right Column */}
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Cycle Time:</span>
+                        <span className="text-sm text-muted-foreground">{t("operatingStatus.cycleTime")}:</span>
                         <input 
                           className="text-sm bg-background border border-border rounded px-2 py-1 w-16 text-center font-mono" 
                           value={selectedMachine.parameters.cycleTime.toFixed(2)} 
@@ -179,7 +179,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                         />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">CheckId:</span>
+                        <span className="text-sm text-muted-foreground">{t("operatingStatus.checkId")}:</span>
                         <input 
                           className="text-sm bg-background border border-border rounded px-2 py-1 w-16 text-center font-mono" 
                           value="4" 
@@ -187,7 +187,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                         />
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Schedule Time:</span>
+                        <span className="text-sm text-muted-foreground">{t("operatingStatus.scheduleTime")}:</span>
                         <input 
                           className="text-sm bg-background border border-border rounded px-2 py-1 w-32 text-center font-mono text-xs" 
                           value="8/28/2015 08:15:11" 
@@ -211,7 +211,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                 <div className="grid grid-cols-3 gap-8 py-4 border-t border-border">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">Output Count:</span>
+                      <span className="text-sm text-muted-foreground">{t("operatingStatus.outputCount")}:</span>
                       <input 
                         className="text-sm bg-background border border-border rounded px-2 py-1 w-16 text-center font-mono" 
                         value={(selectedMachine.production?.today || 400).toString()} 
@@ -219,7 +219,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                       />
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">Target Count:</span>
+                      <span className="text-sm text-muted-foreground">{t("operatingStatus.targetCount")}:</span>
                       <input 
                         className="text-sm bg-background border border-border rounded px-2 py-1 w-16 text-center font-mono" 
                         value="324" 
@@ -227,7 +227,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                       />
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">Output Rate:</span>
+                      <span className="text-sm text-muted-foreground">{t("operatingStatus.outputRate")}:</span>
                       <input 
                         className="text-sm bg-background border border-border rounded px-2 py-1 w-20 text-center font-mono" 
                         value="81.00%" 
@@ -238,7 +238,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
 
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">NG Count:</span>
+                      <span className="text-sm text-muted-foreground">{t("operatingStatus.ngCount")}:</span>
                       <input 
                         className="text-sm bg-background border border-border rounded px-2 py-1 w-16 text-center font-mono" 
                         value="1" 
@@ -246,7 +246,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                       />
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">NG Rate:</span>
+                      <span className="text-sm text-muted-foreground">{t("operatingStatus.ngRate")}:</span>
                       <input 
                         className="text-sm bg-background border border-border rounded px-2 py-1 w-20 text-center font-mono" 
                         value="0.25%" 
@@ -257,7 +257,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
 
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">Time Stop:</span>
+                      <span className="text-sm text-muted-foreground">{t("operatingStatus.timeStop")}:</span>
                       <input 
                         className="text-sm bg-background border border-border rounded px-2 py-1 w-20 text-center font-mono" 
                         value="2h 54m" 
@@ -265,7 +265,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                       />
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">Runtime:</span>
+                      <span className="text-sm text-muted-foreground">{t("operatingStatus.runtime")}:</span>
                       <input 
                         className="text-sm bg-background border border-border rounded px-2 py-1 w-24 text-center font-mono" 
                         value="1d 7h 37m" 
@@ -273,7 +273,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                       />
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">Operation Rate:</span>
+                      <span className="text-sm text-muted-foreground">{t("operatingStatus.operationRate")}:</span>
                       <input 
                         className="text-sm bg-background border border-border rounded px-2 py-1 w-20 text-center font-mono" 
                         value="16.57%" 
@@ -287,7 +287,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                 <div className="col-span-4 grid grid-cols-3 gap-4">
                   {/* Output Rate Chart */}
                   <div className="text-center">
-                    <div className="text-xs text-muted-foreground mb-1">Output Rate</div>
+                    <div className="text-xs text-muted-foreground mb-1">{t("operatingStatus.outputRate")}</div>
                     <ChartContainer config={{}} className="h-20 w-20 mx-auto">
                       <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
@@ -313,7 +313,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
 
                   {/* NG Rate Chart */}
                   <div className="text-center">
-                    <div className="text-xs text-muted-foreground mb-1">NG Rate</div>
+                    <div className="text-xs text-muted-foreground mb-1">{t("operatingStatus.ngRate")}</div>
                     <ChartContainer config={{}} className="h-20 w-20 mx-auto">
                       <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
@@ -339,7 +339,7 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
 
                   {/* Operation Rate Chart */}
                   <div className="text-center">
-                    <div className="text-xs text-muted-foreground mb-1">Operation Rate</div>
+                    <div className="text-xs text-muted-foreground mb-1">{t("operatingStatus.operationRate")}</div>
                     <ChartContainer config={{}} className="h-20 w-20 mx-auto">
                       <ResponsiveContainer width="100%" height="100%">
                         <PieChart>
@@ -367,15 +367,15 @@ export function OperatingStatus({ machines }: OperatingStatusProps) {
                 {/* Additional Info Row */}
                 <div className="flex justify-between mx-14 gap-4 text-xs border-t border-border pt-4">
                   <div className="flex items-center gap-2">
-                    <span className="text-muted-foreground">Output Rate</span>
+                    <span className="text-muted-foreground">{t("operatingStatus.outputRate")}</span>
                     <span className="font-mono">81.00%</span>
                   </div>
                   <div className="flex items-center gap-2 text-status-error">
-                    <span className="text-muted-foreground">NG Rate</span>
+                    <span className="text-muted-foreground">{t("operatingStatus.ngRate")}</span>
                     <span className="font-mono">0.25%</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-muted-foreground">Operation Rate</span>
+                    <span className="text-muted-foreground">{t("operatingStatus.operationRate")}</span>
                     <span className="font-mono">16.57%</span>
                   </div>
                 </div>
